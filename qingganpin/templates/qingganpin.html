@@ -1,0 +1,55 @@
+﻿{% extends "base.html"  %}
+{% block body  %}
+<body>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>BGk情感频</title>
+        <meta name="description" content="个人简历描述">
+        <meta name="keywords" content="关键词" />
+        {% load static %}
+        <!-- Favicons
+        ================================================== -->
+
+        <link rel="shortcut icon" href="img/favicon_jianli.ico" type="image/x-icon">
+
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" type="text/css" href="{% static "daysen/static/css/bootstrap.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "daysen/static/css/font-awesome.css" %}">
+
+        <!-- Slider
+        ================================================== -->
+        <link href="{% static "daysen/static/css/owl.carousel.css" %} rel="stylesheet" media="screen">
+        <link href="{% static "daysen/static/css/owl.theme.css" %} rel="stylesheet" media="screen">
+
+        <!-- Stylesheet
+        ================================================== -->
+        <link rel="stylesheet" type="text/css" href="{% static "daysen/static/css/style.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "daysen/static/css/prettyPhoto.css" %}">
+
+        <link rel="stylesheet" type="text/css" href="{% static "daysen/static/fonts/sns_fonts/iconfont.css" %}">
+
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <!-- Header -->
+    <header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <p class="intro-text">用来存放和展示BGk情感频的一草一木</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+</body>
+{% endblock %}
