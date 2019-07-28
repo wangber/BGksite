@@ -71,6 +71,8 @@
     <Folder Include="gongsi\" />
     <Folder Include="gongsi\migrations\" />
     <Folder Include="gongsi\templates\" />
+    <Folder Include="media\" />
+    <Folder Include="media\qingganwen\" />
     <Folder Include="qingganpin\" />
     <Folder Include="qingganpin\migrations\" />
     <Folder Include="qingganpin\templates\" />

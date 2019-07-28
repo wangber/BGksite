@@ -44,7 +44,18 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <p class="intro-text">这里是首页，放一些团队介绍啊团队动态啊之类的</p>
+                        <p align="left" style="font-family:KaiTi;font-size:25px ">主要成员</p>
+                        <p class="intro-text">{{members}}</p>
+                        <p align="left" style="font-family:KaiTi;font-size:25px ">快乐时光</p>
+                        <p class="intro-text">{{happytime}}</p>
+                        <p align="left" style="font-family:KaiTi;font-size:25px ">近期活动</p>
+                        {% for i in activity %}
+                        <p class="intro-text">**************************************</p>
+                        <p class="intro-text" style="align-content:flex-end">***{{i.topic}}***</p>
+                        <p class="intro-text">{{i.text}}</p>
+                        <p class="intro-text" style="color:aqua">此次活动由{{i.holder}}举办</p>
+                        <p class="intro-text">***************************************</p>
+                        {% endfor %}
 
                     </div>
                 </div>
