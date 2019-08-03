@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>所有音乐</title>
+
+</head>
+<body>
+    <div>
+        {% for i in music %}
+        <div style="border:solid">
+            <p class="intro-text" style="color:chartreuse">{{i.date}}</p>
+            <p class="intro-text" style="color:chartreuse">{{i.topic}}</p>
+            <p class="intro-text" style="color:chartreuse">{{i.story|truncatechars:10}}</p>
+            <a href="../../tolisen-{{i.id}}.html">去欣赏</a>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

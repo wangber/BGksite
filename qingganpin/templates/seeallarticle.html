@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>BGk情感频所有文章</title>
+</head>
+<body>
+    <div>
+        <p style="align-content:center;font-family:'KaiTi';font-size:20px;text-align:center;border:solid">情感频周更文章</p>
+        {% for i in wen %}
+        <p>文章{{i.id}}    {{i.date}}</p>/media/{{i.content}}
+        <a href="../../media/{{i.content}}">点击下载</a>
+
+        <a href="../../../seeqinggan/{{i.id}}">细细品读</a>
+        {% endfor %}
+    </div>
+</body>
+</html>

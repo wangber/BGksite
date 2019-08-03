@@ -43,6 +43,9 @@
     <Compile Include="gongsi\migrations\__init__.py" />
     <Compile Include="gongsi\models.py" />
     <Compile Include="gongsi\tests.py" />
+    <Compile Include="gongsi\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="gongsi\views.py" />
     <Compile Include="gongsi\__init__.py" />
     <Compile Include="index\admin.py" />
@@ -58,6 +61,9 @@
     <Compile Include="qingganpin\migrations\__init__.py" />
     <Compile Include="qingganpin\models.py" />
     <Compile Include="qingganpin\tests.py" />
+    <Compile Include="qingganpin\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="qingganpin\views.py" />
     <Compile Include="qingganpin\__init__.py" />
   </ItemGroup>
@@ -72,6 +78,10 @@
     <Folder Include="gongsi\migrations\" />
     <Folder Include="gongsi\templates\" />
     <Folder Include="media\" />
+    <Folder Include="media\happyimage\" />
+    <Folder Include="media\memberimage\" />
+    <Folder Include="media\dayting\" />
+    <Folder Include="media\zhizhuimage\" />
     <Folder Include="media\qingganwen\" />
     <Folder Include="qingganpin\" />
     <Folder Include="qingganpin\migrations\" />
@@ -113,7 +123,18 @@
     <Content Include="daysentence\templates\daysen.html" />
     <Content Include="disanketang\templates\disanketang.html" />
     <Content Include="gongsi\templates\gongsi.html" />
+    <Content Include="gongsi\templates\xingfukuaile.html" />
+    <Content Include="index\templates\activity.html" />
+    <Content Include="qingganpin\templates\allmusic.html" />
+    <Content Include="index\templates\member.html" />
+    <Content Include="media\happyimage\四月1.jpg" />
+    <Content Include="media\happyimage\四月1_MZh5gdx.jpg" />
+    <Content Include="media\qingganwen\try.md" />
+    <Content Include="qingganpin\templates\daysen.html" />
     <Content Include="qingganpin\templates\qingganpin.html" />
+    <Content Include="qingganpin\templates\seeallarticle.html" />
+    <Content Include="qingganpin\templates\seeqingganwen.html" />
+    <Content Include="qingganpin\templates\tolisen-.html" />
     <Content Include="static\css\bootstrap.min.css" />
     <Content Include="static\css\mobile-menu.css" />
     <Content Include="static\css\style.css" />

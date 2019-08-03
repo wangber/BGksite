@@ -1,4 +1,4 @@
-<center><b>BGk小站2.0开发项目组</b>
+<center><b>BGk小站2.0开发项目组</b></center>
 
 ## 招聘启事
 

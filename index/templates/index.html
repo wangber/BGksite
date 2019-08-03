@@ -1,62 +1,42 @@
 ﻿{% extends "base.html"  %}
 {% block body  %}
 <body>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>每日伤感</title>
-        <meta name="description" content="个人简历描述">
-        <meta name="keywords" content="关键词" />
-        {% load static %}
-        <!-- Favicons
-        ================================================== -->
-
-        <link rel="shortcut icon" href="img/favicon_jianli.ico" type="image/x-icon">
-
-
-        <!-- Bootstrap -->
-        <link rel="stylesheet" type="text/css" href="{% static "daysen/static/css/bootstrap.css" %}">
-        <link rel="stylesheet" type="text/css" href="{% static "daysen/static/css/font-awesome.css" %}">
-
-        <!-- Slider
-        ================================================== -->
-        <link href="{% static "daysen/static/css/owl.carousel.css" %} rel="stylesheet" media="screen">
-        <link href="{% static "daysen/static/css/owl.theme.css" %} rel="stylesheet" media="screen">
-
-        <!-- Stylesheet
-        ================================================== -->
-        <link rel="stylesheet" type="text/css" href="{% static "daysen/static/css/style.css" %}">
-        <link rel="stylesheet" type="text/css" href="{% static "daysen/static/css/prettyPhoto.css" %}">
-
-        <link rel="stylesheet" type="text/css" href="{% static "daysen/static/fonts/sns_fonts/iconfont.css" %}">
-
-
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-    </head>
+    
     <!-- Header -->
     <header class="intro">
         <div class="intro-body">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <p align="left" style="font-family:KaiTi;font-size:25px ">主要成员</p>
+                        <p align="left" style="font-family:KaiTi;font-size:25px;border:1px solid #ccc">BGk简介</p>
+                        <p>放置介绍正文</p>
+                        <p align="left" style="font-family:KaiTi;font-size:25px;border:1px solid #ccc">主要成员</p>
+                        <p>这里放置一个横向列表（照片+简介），每个成员一个视图</p>
                         <p class="intro-text">{{members}}</p>
-                        <p align="left" style="font-family:KaiTi;font-size:25px ">快乐时光</p>
-                        <p class="intro-text">{{happytime}}</p>
-                        <p align="left" style="font-family:KaiTi;font-size:25px ">近期活动</p>
-                        {% for i in activity %}
+                        {% for i in memebers %}
                         <p class="intro-text">**************************************</p>
-                        <p class="intro-text" style="align-content:flex-end">***{{i.topic}}***</p>
-                        <p class="intro-text">{{i.text}}</p>
-                        <p class="intro-text" style="color:aqua">此次活动由{{i.holder}}举办</p>
-                        <p class="intro-text">***************************************</p>
+                        <p class="intro-text" style="align-content:flex-end">***{{i.mid}}***</p>
+                        <p class="intro-text">简介：{{i.introduction}}</p>
+                        <p class="intro-text" style="color:aqua">爱好：{{i.hobby}}</p>
+                        <a href="/members/{{ i.id }}">查看更多：{{ i.mid }}</a>
                         {% endfor %}
 
+                        <p align="left" style="font-family:KaiTi;font-size:25px;border:1px solid #ccc ">快乐时光</p>
+                        <p>这里放一些轮播图，展示快乐时光</p>
+                        {% for i in happytime %}
+                        <div style="width:120px;height:120px;">
+                            <img src="/media/{{i.himage}}" width="100" height="100" style="float:left">
+                        </div>
+                        {% endfor %}
+                        <br>
+                        <br>
+                        <p align="left" style="font-family:KaiTi;font-size:25px;border:1px solid #ccc ">近期活动</p>
+                        {% for i in activity %}
+                        <p class="intro-text">**************************************</p>
+                        <a class="intro-text" style="align-content:flex-end" href="activity/{{i.id}}">***{{i.topic}}***</a>
+                        <p class="intro-text">{{i.text|truncatechars:10}}</p>
+                        <p class="intro-text" style="color:aqua">此次活动由{{i.holder}}举办</p>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
