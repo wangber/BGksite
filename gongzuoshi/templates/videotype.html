@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>{{type.tname}}类视频区</title>
+</head>
+<body>
+    <div>
+        <p style="color:blue">{{type.tname}}类视频区</p>
+    </div>
+    <div style="border:inherit">
+        {% for i in video %}
+        视频：{{i.vname}}<br>
+        视频简介：{{i.vdis|truncatechars:5}}<span><a href="seevideo-{{i.id}}.html">去欣赏该视频</a></span><br>
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -5,21 +5,39 @@
     <meta charset="utf-8" />
     <title>幸福快乐有限公司</title>
 </head>
+{% extends "base.html"  %}
+{% block body  %}
 <body>
     <div>
         <p style=" font-family:STXingkai;font-size:50px;align-self:center">你好，这里是幸福快乐有限公司</p>
     </div>
     <div>
-        <p>公司简介</p>
+
+        <p align="left" style="font-family:KaiTi;font-size:25px;border:1px solid #ccc">公司简介</p>
         <p>此处放置介绍正文</p>
     </div>
     <div>
-        <p>产品分享</p>
-        <p>放置一些小灰的小可爱（图文）</p>
+        <p align="left" style="font-family:KaiTi;font-size:25px;border:1px solid #ccc">产品分享</p>
+
+        {% for i in zhizhu %}
+        <div style="border:dashed">
+            <p>{{i.name}}</p>
+            <img src="/media/{{i.zhuimage}}" alt="{{i.name}}" width="200" height="200" />
+            <p>{{i.introduce|truncatechars:15}}<span><a href="chongwuxiangqing{{i.id}}.html">点击欣赏该宠物</a></span></p>
+        </div>
+        {% endfor %}
+        <a href="allchongwu">查看所有宠物</a>
     </div>
     <div>
-        <p>股东组成</p>
-        <p>这里放置股东组成，做成图表啥的</p>
+        <p align="left" style="font-family:KaiTi;font-size:25px;border:1px solid #ccc">股东组成</p>
+        {% for i in gudong %}
+        <div style="border:double">
+            <p>股东姓名:{{i.name}}</p>
+            <p>持有股份：{{i.own}}</p>
+            <p>入股日期：{{i.joinday}}</p>
+        </div>
+        {% endfor %}
     </div>
 </body>
+{% endblock %}
 </html>

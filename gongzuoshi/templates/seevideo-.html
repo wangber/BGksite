@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>欣赏视频</title>
+</head>
+<body>
+    <div>
+        <p style="font-family:STSong;font-size:20px">{{video.vname}}</p>
+        <p>{{video.vdis}}</p>
+        <video controls="controls" width="800">
+            <source src="/media/{{video.videocontent}}" type="video/mp4" />
+        </video>
+        <p>前往B站观看体验或许会更佳哦~~（顺便三连？）</p>
+        {% if video.vblianjie == '暂无' %}
+        <p>哇哦~~这个视频还没有上传B站，敬请期待吧</p>
+        {% else %}
+        <a href="{{video.vblianjie}}">点击前往</a>
+        {% endif %}
+    </div>
+</body>
+</html>

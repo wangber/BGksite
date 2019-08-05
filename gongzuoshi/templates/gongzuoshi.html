@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>视频颂-杲师自媒体工作室</title>
+</head>
+{% extends "base.html"  %}
+{% block body  %}
+
+<body>
+    <div>
+        <p style="font-family:STXingkai;font-size:30px">欢迎光临杲师自媒体工作室</p>
+    </div>
+    <div>
+        <p style="border:solid">工作室简介</p>
+        <p>**简介正文**</p>
+    </div>
+    <div>
+        <p style="border:solid">成员风采</p>
+        {% for i in member %}
+        <div style="border:dashed">
+            <p>成员：{{i.mname}}</p>
+            <p>承担工作：{{i.job}}</p>
+            <p>成员简介：{{i.jianjie}}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div>
+        <p style="border:solid">视频区</p>
+        <table border="5">
+            <tr>
+
+                {% for i in type %}
+                <td>
+                    <span style="color:aquamarine">视频类别：{{i.tname}}<span><a href="videotype-{{i.id}}">进入该类</a></span></span><br>
+                    {% for j in video %}
+                    {% if j.vtype == i %}
+                    <div style="border:inherit">
+                        视频：{{j.vname}}<br>
+                        视频简介：{{j.vdis|truncatechars:5}}<span><a href="seevideo-{{j.id}}.html">去欣赏该视频</a></span><br>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    {% endfor %}
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+{% endblock %}
+</html>

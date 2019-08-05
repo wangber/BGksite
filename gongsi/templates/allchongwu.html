@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>所有宠物</title>
+
+</head>
+<body>
+    <div>这里是幸福快乐有限公司所有的宠物</div>
+    <div>
+        <div >
+            <p>{% for i in zhizhu %}</p>
+            <div style="border:dashed">
+                <p>{{i.name}}</p>
+                <p>{{i.zhuimage}}</p>
+                <img src="/media/{{i.zhuimage}}" alt="{{i.name}}" width="100" height="100"/>
+                <p>{{i.introduce|truncatechars:15}}<span><a href="chongwuxiangqing{{i.id}}.html">查看详情</a></span></p>
+            </div>
+            <p>{% endfor %}</p>
+        </div>
+    </div>
+</body>
+</html>

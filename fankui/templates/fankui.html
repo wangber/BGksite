@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>给点建议</title>
+</head>
+{% extends "base.html"  %}
+{% block body  %}
+<body>
+    <div style="text-align:center">给小站提点建议吧(*￣︶￣)（但是丑别说了哈，人家早就知道了）<br></div>
+    <div style="width: 500px; height: auto;margin: 0 auto; font-size:20px">
+        <form action="/fankui/jianyi/" method="post" name="addpro">
+            {% csrf_token %}
+            你的建议<input name="jianyi" type="text" maxlength="3000" style="width:545px;height:35px;font-size:25px" /><br>
+            留下你的称谓吧（昵称也可以的哟）<input name="ider" type="text" style="width:545px;height:35px;font-size:20px" /><br>
+            <input type="submit" value="提交">
+        </form>
+    </div>
+</body>
+{% endblock %}
+</html>
