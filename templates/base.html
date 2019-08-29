@@ -1,25 +1,55 @@
 ﻿{% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
-
-<div style="border:dashed">
-    <table  border="0" style="font-size:30px;text-align:center">
-        <tr>
-            <td class="daohang"><a href="/">首页</a></td>
-            <td class="daohang"><a href="/qingganpin">BGk情感频</a></td>
-            <td class="daohang"><a href="/gongzuoshi">视频颂-杲师自媒体工作室</a></td>
-            <td class="daohang"><a href="/gongsi/xingfukuaile">幸福快乐有限公司</a></td>
-            <td class="daohang"><a href="/gongsi" data-toggle="dropdown" class="dropdown-toggle">旗下公司  </a></td>
-            <td class="daohang"><a href="/fankui">问题反馈</a></td>
-        </tr>
-    </table>
-</div>
-<style type="text/css">
-    .daohang {
-        width:200px;
-        font-family:STKaiti;
-        font-size:20px;
-        
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="{% static 'js/jQuery.js' %}"></script>
+    <script src="{% static 'bootlib/js/bootstrap.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'bootlib/css/bootstrap.css' %}"> {% block head_ex %} {% endblock head_ex %}
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    
+    body {
+        background-position-x: center;
+        background-position-y: top;
+        background-size: initial;
+        background-repeat: no-repeat;
+        background-attachment: initial;
+        background-origin: initial;
+        background-clip: initial;
+        background-color: rgb(250, 250, 233);
+    }
+    
+    .route {
+        background-image: url(http://img3.redocn.com/tupian/20150606/huangseshuxiangmuwentietu_3761478.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        text-align: center;
+        margin: 100px auto 0 auto;
+        font-size: 25px;
     }
 </style>
- {% block body %}{% endblock %}
+
+
+<body>
+    <div class="route container">
+        <ul class="nav nav-pills nav-justified">
+            <li role="presentation"><a href="/">首页</a></li>
+            <li role="presentation"><a href="/qingganpin">BGk情感频</a></li>
+            <li role="presentation"><a href="/gongzuoshi">视频颂-杲师自媒体工作室</a></li>
+            <li role="presentation"><a href="/gongsi/xingfukuaile">幸福快乐有限公司</a></li>
+            <li role="presentation"><a href="/gongsi">旗下公司</a></li>
+        </ul>
+    </div>
+
+    {% block body %}{% endblock %}
+</body>
+
+</html>

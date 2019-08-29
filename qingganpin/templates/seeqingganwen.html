@@ -1,14 +1,63 @@
-﻿<!DOCTYPE html>
+﻿{% extends "base.html" %} {% block head_ex %}
+<title>BGk情感频——{{date|date:"Y-m-d"}}</title>
+{% endblock head_ex %} {% block body %}
+
+
+<style>
+    .panel {
+        margin-top: 10px;
+        line-height: 30px;
+        letter-spacing: 3px;
+        font-family: 楷体;
+        font-size: 18px;
+        padding: 10px;
+    }
+    
+    .topic {
+        font-size: 30px !important;
+    }
+</style>
+<div class="container">
+    <div class="back" style="margin-top: 30px;">
+        <a href="javascript:history.go(-1)" class="glyphicon glyphicon-share-alt">返回</a>
+    </div>
+    <div class="panel panel-info">
+
+        <div class="panel-heading">
+            <h1 class="panel-title topic">{{topic}}</h1>
+        </div>
+        <div class="panel-body">
+            {% load markdown_deux_tags %}
+            <p>{{con|markdown}}</p>
+        </div>
+        <div class="panel-footer panel-primary">更新日期：{{date}}</div>
+    </div>
+</div>
+
+
+{% endblock body %}
+
+
+
+
+
+
+
+
+
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="utf-8" />
     <title>情感频-{{date}}</title>
 </head>
+
 <body>
     <div>
         {% load markdown_deux_tags %}
         <p>{{con|markdown}}</p>
     </div>
 </body>
+
 </html>

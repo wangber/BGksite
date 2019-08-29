@@ -1,49 +1,172 @@
-﻿{% extends "base.html"  %}
-{% block body  %}
+﻿{% extends "base.html" %} {% block head_ex %}
 <title>BGk情感频</title>
-<body>
+{% endblock head_ex %} {% block body %}
+<style>
+    .meitianyiju {
+        background: #a8a8a8;
+        margin-top: 50px;
+    }
     
+    .juzitxt {
+        margin-top: auto;
+        font-size: 20px;
+        border-left: 2px solid #cdec93;
+    }
+</style>
+
+<div class="container container_main">
+    <div class="welcome jumbotron" style="margin-top:30px;">
+        <div class="up">
+            <h2 class="text-center">我们所度过的每个平凡的日常，也许就是连续发生的奇迹</h2>
+        </div>
+        <div class="down text-center">
+            <h3>欢迎访问BGk情感频（￣︶￣）</h3>
+        </div>
+
+    </div>
+    <div class="row meitianyiju">
+        <div class="col-md-5 lead text-center">
+            <h3 class="glyphicon glyphicon-calendar">每日一句</h3>
+            <h4>每天欣赏一句伤感话语，找回内心深处的自己<span class="glyphicon glyphicon-hand-right"></span></h4>
+        </div>
+        <div class="col-md-7 juzitxt">
+            {{juzi}}
+        </div>
+        <div class="info">
+            <p style="float:right">每日一句所有展示的句子均来自<span class="glyphicon glyphicon-pushpin">短文学网:<a href="https://www.duanwenxue.com/">https://www.duanwenxue.com/</a></span> </p>
+        </div>
+    </div>
+    <div class="meiyueyiting">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title ting_title">每月一听</h3>
+            </div>
+            <div class="panel-body">
+                <!-- 定制内容 -->
+                <style>
+                    .one_song {
+                        margin-top: 20px;
+                        font-size: 150%;
+                        line-height: 50px；
+                    }
+                    
+                    .meiyueyiting {
+                        margin-top: 35px;
+                    }
+                    
+                    .ting_title {
+                        font-size: 25px !important;
+                    }
+                </style>
+                <script>
+                    $(function() {
+                        $('.one_song').mouseenter(function() {
+                            $(this).addClass('active');
+                            $(this).siblings().removeClass('active');
+                        })
+                        $('.one_song').mouseleave(function() {
+                            $(this).removeClass('active');
+
+                        })
+                    })
+                </script>
+                <div class="list-group">
+                    {% for i in music %}
+                    <span class="list-group-item  one_song">
+                        <h4 class="list-group-item-heading">一听主题：{{i.topic}}</h4>
+                        <p class="list-group-item-text">一听故事：{{i.story|truncatechars:10}}</p>
+                        <a href="/tolisen-{{i.id}}.html"><i class="glyphicon glyphicon-headphones"></i>去欣赏</a>
+                    </span> {% endfor %}
+                </div>
+
+                <a href="allmusic/" class="glyphicon glyphicon-leaf"> 查看所有 </a>
+            </div>
+            <div class="panel-footer">每月一听栏目由<a href="">BGk.Failo</a> 维护</div>
+        </div>
+    </div>
+    <!-- 每月一听 -->
+    <!-- 情感频文章 -->
+    <style>
+        .one_article {
+            margin-top: 15px;
+        }
+        
+        .one_article_active {
+            background: #d9dfcf;
+            margin: 30px auto;
+        }
+    </style>
+    <script>
+        $(function() {
+            $('.one_article').mouseenter(function() {
+                $(this).addClass('one_article_active');
+                $(this).siblings().removeClass('one_article_active');
+
+            })
+            $('.one_article').mouseleave(function() {
+                $(this).removeClass('one_article_active');
+
+            })
+        })
+    </script>
+    <div class="wen">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title ting_title">BGk情感频周更文章</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    {% for i in wen %}
+
+                    <li class="list-group-item one_article">
+
+                        {% load markdown_deux_tags %}
+                        <p>{{i.content|truncatechars:50|markdown}}</p>
+                        <p>{{i.date}}</p>
+                        <a href="/seeqinggan/{{i.id}}" class="glyphicon glyphicon-book" style="letter-spacing:2px;font-size:20px">细细品读</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <a href="seeallwenarticle/">查看所有文章</a>
+            </div>
+            <div class="panel-footer">情感频文章栏目由<a href="http://127.0.0.1:8000/members/1">BGk.Lemon</a> 维护</div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+<body>
+
     <!-- Header -->
     <header class="intro">
         <div class="intro-body">
             <div class="container">
                 <div class="row">
-                    <p class="intro-text">用来存放和展示BGk情感频的一草一木</p>
-                    <div class="col-md-8 col-md-offset-2">
+                    <p style="align-content:center;font-family:'KaiTi';font-size:20px;text-align:center;border:solid">情感频周更文章</p>
+                    {% for i in wen %}
+                    <p>文章{{i.id}} {{i.date}}</p>{{i.content}}
 
-                        <p style="align-content:center;font-family:'KaiTi';font-size:20px;text-align:center;border:solid">每天一句</p>
-                        <p class="intro-text" style="color:chartreuse;font-family:KaiTi">每天欣赏一句伤感话语，找回内心深处的自己</p>
-                        <p class="intro-text" style="color:aqua;font-family:KaiTi">↓↓↓↓↓↓↓↓↓↓↓↓</p>
-                        <p class="intro-text" style="background-color:aqua;font-family:STXingkai">{{juzi}}</p>
-                    </div>
-                    <div class="col-md-8 col-md-offset-2">
-
-                        <p style="align-content:center;font-family:'KaiTi';font-size:20px;text-align:center;border:solid">每月一听</p>
-                        <p class="intro-text" style="color:chartreuse;font-family:KaiTi">月更列表</p>
-                        {% for i in music %}
-                        <div style="border:solid">
-                        <p class="intro-text" style="color:chartreuse">{{i.date}}</p>
-                        <p class="intro-text" style="color:chartreuse">{{i.topic}}</p>
-                        <p class="intro-text" style="color:chartreuse">{{i.story|truncatechars:10}}</p> 
-                        <a href="/tolisen-{{i.id}}.html">去欣赏</a>
-                        </div>
-                        {% endfor %}
-                       <a href="allmusic/"> 查看所有 </a>
-                    </div>
-                    <div class="col-md-8 col-md-offset-2">
-
-                        <p style="align-content:center;font-family:'KaiTi';font-size:20px;text-align:center;border:solid">情感频周更文章</p>
-                        {% for i in wen %}
-                        <p>文章{{i.id}}    {{i.date}}</p>/media/{{i.content}}
-                        <a href="/media/{{i.content}}">点击下载</a>
-
-                        <a href="/seeqinggan/{{i.id}}">细细品读</a>
-                        <a href="seeallwenarticle/">查看所有文章</a>
-                        {% endfor %}
-                    </div>
+                    <a href="/seeqinggan/{{i.id}}">细细品读</a>
+                    <a href="seeallwenarticle/">查看所有文章</a> {% endfor %}
                 </div>
             </div>
         </div>
+        </div>
     </header>
 </body>
-{% endblock %}

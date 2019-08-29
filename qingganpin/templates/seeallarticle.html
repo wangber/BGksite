@@ -1,19 +1,98 @@
-﻿<!DOCTYPE html>
+{% extends "base.html" %} {% block head_ex %}
+<title>BGk情感频——所有文章</title>
+{% endblock head_ex %} {% block body %}
+<style>
+    .one_article {
+        margin-top: 15px;
+    }
+    
+    .one_article_active {
+        background: #d9dfcf;
+        margin: 30px auto;
+    }
+    
+    .wen_title {
+        font-size: 25px;
+    }
+    
+    .all_wen {
+        margin-top: 50px;
+    }
+</style>
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title>BGk情感频所有文章</title>
-</head>
-<body>
-    <div>
-        <p style="align-content:center;font-family:'KaiTi';font-size:20px;text-align:center;border:solid">情感频周更文章</p>
-        {% for i in wen %}
-        <p>文章{{i.id}}    {{i.date}}</p>/media/{{i.content}}
-        <a href="../../media/{{i.content}}">点击下载</a>
 
-        <a href="../../../seeqinggan/{{i.id}}">细细品读</a>
-        {% endfor %}
+<div class="container">
+    <div class="back" style="margin-top: 30px;">
+        <a href="javascript:history.go(-1)" class="glyphicon glyphicon-share-alt">返回</a>
     </div>
-</body>
-</html>
+    <div class="panel panel-default all_wen">
+        <div class="panel-heading text-center">
+            <h3 class="panel-title wen_title">BGk情感频周更文章</h3>
+        </div>
+        <div class="panel-body">
+            <ul class="list-group">
+                {% for i in wen %}
+
+                <li class="list-group-item one_article">
+
+                    {% load markdown_deux_tags %}
+                    <p>{{i.content|truncatechars:50|markdown}}</p>
+                    <p>{{i.date}}</p>
+                    <a href="/seeqinggan/{{i.id}}" class="glyphicon glyphicon-book" style="letter-spacing:2px;font-size:20px">细细品读</a>
+                </li>
+                {% endfor %}
+            </ul>
+
+        </div>
+        <div class="panel-footer">情感频文章栏目由<a href="http://127.0.0.1:8000/members/1">BGk.Lemon</a> 维护</div>
+    </div>
+    <div class="pagenum">
+
+        <span><a href=></a></span>
+
+        <!--******************-->
+
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li>
+                    {% if need_page.has_previous %}
+                    <a href="" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                    {% else %}
+                    <span aria-hidden="true">&laquo;</span> {% endif %}
+
+                </li>
+                {% for i in page_range %}
+                <li><a href="?page={{i}}">{{i}}</a></li>
+                {% endfor %}
+                <li>
+                    {% if need_page.has_next %}
+
+                    <a href="" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+
+                    </a>
+
+                    {% else %}
+                    <span aria-hidden="true">&raquo;</span>{% endif %}
+                </li>
+
+            </ul>
+        </nav>
+        <!--******************-->
+
+    </div>
+
+
+</div>
+
+
+
+{% endblock body %}
+<p style="align-content:center;font-family:'KaiTi';font-size:20px;text-align:center;border:solid">情感频周更文章</p>
+{% for i in wen %}
+<p>文章{{i.id}} {{i.date}}</p>{{i.content}}
+<a href="../../media/{{i.content}}">点击下载</a>
+
+<a href="../../../seeqinggan/{{i.id}}">细细品读</a> {% endfor %}

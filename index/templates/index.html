@@ -1,47 +1,195 @@
-﻿{% extends "base.html"  %}
-{% block body  %}
+{% extends "base.html" %} {% block head_ex %}
 <title>主页-欢迎来访BGk俱乐部</title>
-<body>
+{% endblock head_ex %} {% block body %}
+<style>
+    .txt {
+        font-size: 17px;
+        line-height: 30px;
+        letter-spacing: 3px;
+    }
     
-    <!-- Header -->
-    <header class="intro">
-        <div class="intro-body">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <p align="left" style="font-family:KaiTi;font-size:25px;border:1px solid #ccc">BGk简介</p>
-                        <p>放置介绍正文</p>
-                        <p align="left" style="font-family:KaiTi;font-size:25px;border:1px solid #ccc">主要成员</p>
-                        <p>这里放置一个横向列表（照片+简介），每个成员一个视图</p>
-                        <p class="intro-text">{{members}}</p>
-                        {% for i in memebers %}
-                        <p class="intro-text">**************************************</p>
-                        <p class="intro-text" style="align-content:flex-end">***{{i.mid}}***</p>
-                        <p class="intro-text">简介：{{i.introduction}}</p>
-                        <p class="intro-text" style="color:aqua">爱好：{{i.hobby}}</p>
-                        <a href="/members/{{ i.id }}">查看更多：{{ i.mid }}</a>
-                        {% endfor %}
+    .welcome {
+        margin-top: 20px;
+        font-family: Xingkai;
+    }
+    
+    .BGk-intro {
+        border: 2px solid #0d9ff3;
+        padding: 10px;
+        height: 600px;
+        overflow: auto;
+        display: none;
+    }
+</style>
+<script>
+    $(function() {
+        $('.btn-lg').click(function() {
+            $('.BGk-intro').slideToggle(1000);
+            if ($(this).text() === '查看简介') {
+                $(this).text('收起简介');
+            } else {
+                $(this).text('查看简介');
+            }
 
-                        <p align="left" style="font-family:KaiTi;font-size:25px;border:1px solid #ccc ">快乐时光</p>
-                        <p>这里放一些轮播图，展示快乐时光</p>
-                        {% for i in happytime %}
-                        <div style="width:120px;height:120px;">
-                            <img src="/media/{{i.himage}}" width="100" height="100" style="float:left">
-                        </div>
-                        {% endfor %}
-                        <br>
-                        <br>
-                        <p align="left" style="font-family:KaiTi;font-size:25px;border:1px solid #ccc ">近期活动</p>
-                        {% for i in activity %}
-                        <p class="intro-text">**************************************</p>
-                        <a class="intro-text" style="align-content:flex-end" href="activity/{{i.id}}">***{{i.topic}}***</a>
-                        <p class="intro-text">{{i.text|truncatechars:10}}</p>
-                        <p class="intro-text" style="color:aqua">此次活动由{{i.holder}}举办</p>
-                        {% endfor %}
-                    </div>
-                </div>
+        })
+    })
+</script>
+<div class="container">
+    <div class="welcome jumbotron">
+        <h1>welcome to visit BGk site~</h1>
+
+    </div>
+    <div class="panel panel-default">
+        <div class="lead text-center h2 panel-body">
+            BGk简介
+        </div>
+    </div>
+
+    <p><button class="btn btn-primary btn-lg">查看简介</button></p>
+    <div class="BGk-intro">
+
+
+
+
+        <p>
+            <span><h3>成立背景：</h3></span><span class="txt">随着高考后高中生涯的结束，昔日朝夕相处的亲密玩伴即将奔赴全国各地踏入大学殿堂，联系方式仅仅只能停留在班级QQ群交流等简单的互动方式，远远无法满足我们日常情感的维系和交流也无法提供共同进步的平台。进入大学后，随着精神文化需求的不断提高，生活质量与品质的不断进步，大家的生活追求，娱乐需求，兴趣爱好的培养已经成为了自己发展道路上必不可少的一部分。再者，随着游戏娱乐行业在现代人类社会生活方式中的迅速发展、各人思想境界的不断提高以及大家精神文化追求品质的飞跃改变，促使大家日常空闲时间利用方式更加多元化，娱乐精神升华产生了更加迫切的需要。因此，为了缅怀及挽留即将逝去的青春，继续感受和升华过去大家一起拼搏努力共同进步的精神，成立一个追求梦想和自由的，让大家维系昔日深厚感情的俱乐部平台被林冲和方亚辉提上了日程。
+            2017年冬天，南昌窗外的刺骨寒风和珠海的冬日暖阳形成强烈的对比，就是在那个晚上，林冲同方亚辉进行了秘密语音通话，两人就成立俱乐部一事进行了多方讨论，涉及俱乐部名称和俱乐部成员以及俱乐部指导思想等问题。语音会议商讨结果如下： 俱乐部名称 秉着自由、理想和娱乐的精神，林冲和方亚辉两人最终将俱乐部名称定为“BGk”（ 结合中英内涵翻译文化，字体结构理论，以及中国汉字的汉语拼音首字母提取表示法，我们得到此名:寓意为——不(B)—挂(G)—科(K)！在对俱乐部的命名思考中，充分结合以上所述的文化内涵，故而得出此名，以激励战队内成员努力学习，不要挂科！），最开始为三个大写字母B
+            G K 组成，但不曾想与某不知名组织重名，故将大写的 K 改为小写k，并由方亚辉出六元人民币巨资在王者荣耀客户端购买战队挂名BGk，作为俱乐部临时基地，同时宣告日后涉及王者荣耀、刺激战场、LOL、娱乐演出、哔哩哔哩up主培养、各小型盈利公司及工作室的BGk俱乐部正式成立。</span>
+            <span><h3>俱乐部成员</h3></span>
+            <span class="txt">在最初巧合之下的王者 吃鸡 联盟讨论组的基础上，林冲和方亚辉两人严肃讨论斟酌之后确立了以下固定成员： 
+                <ul class="txt">
+                    <li>
+                        <ul><h4>俱乐部创始人兼法人代表：</h4>
+                                  <mark>林冲 方亚辉</mark>
+                        </ul>
+                    </li>
+                    <li>
+                    <ul>
+                        <h4>俱乐部成员及ID:</h4>
+                        <li>林冲 BGk.Captain</li>
+                        <li>方亚辉 BGk.Failo</li>
+                        <li>王渤 BGk.Lemon</li>
+                        <li>汪俊鹏 BGk.Chaos</li>
+                        <li>邓盛旺 BGk.Awang</li>
+                        <li>高洋 BGk.Meng</li>
+                        <li>肖良雄 BGk.02Darling </li>
+                        <li>李杲 BGk.April</li>
+                        <li>谢济谦 BGk.Decade</li>
+                        <li>汪刘 BGk.Lagrange</li>
+                        <li>唐加权 BGk.Flying</li>
+                        <li>方艺霖 BGk.</li>
+                    </ul>
+                    </li>
+                </ul>
+            </span>
+            <span><h3>俱乐部指导思想</h3></span>
+            <span class="txt">好好学习，生活向上，独立思想</span>
+
+
+
+
+        </p>
+    </div>
+
+    <div class="member">
+        <div class="panel panel-default">
+            <div class="lead text-center h2 panel-body">
+                成员风采
             </div>
         </div>
-    </header>
-</body>
-{% endblock %}
+        <div class="list-group">
+            {% for i in memebers %}
+            <span class="list-group-item every_member">
+            <p class="intro-text btn btn-info">***{{i.mid}}***</p>
+            <p class="intro-text ">爱好：{{i.hobby}}</p>
+            <p class="intro-text">简介：{{ i.introduction|truncatechars:20 }}</p>
+            <a href="/members/{{ i.id }}" class="glyphicon glyphicon-leaf">详细了解：{{ i.mid }}</a></span> {% endfor %}
+        </div>
+    </div>
+    <!-- 成员结束 -->
+    <div class="activity">
+        <div class="panel panel-default">
+            <div class="lead text-center h2 panel-body">
+                近期活动
+            </div>
+        </div>
+
+        <div class="list-group">
+            {% for i in activity %}
+            <span class="list-group-item every_member">
+                <a class="intro-text" style="align-content:flex-end" href="activity/{{i.id}}"><h4 class="glyphicon glyphicon-fire">{{i.topic}}</h4></a>
+                {% load markdown_deux_tags %}
+                <p class="intro-text">{{i.text|truncatechars:50|markdown}}</p>
+                <p class="intro-text glyphicon glyphicon-magnet">此次活动由{{i.holder}}举办</p>
+                 {% endfor %}
+            </div>     
+        </div>
+        <!-- activity结束 -->
+        
+    <div class="time">
+        <div class="panel panel-default">
+            <div class="lead text-center h2 panel-body">
+                快乐时光
+            </div>
+        </div>
+        <!--******************************bootstrap 轮播图插件********************************-->
+        <style>
+            .carousel-inner>.item>img {
+                width: 1328px;
+                height: 675px;
+            }
+        </style>
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                {% for i in happytime %}
+                <li data-target="#carousel-example-generic" data-slide-to="{{i.id}}"></li>
+                {% endfor %}
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="/media/happyimage/company1.png" alt="...">
+                    <div class="carousel-caption">
+                        <h3>BGk的快乐时光</h3>
+                        <p>珍惜怀念我们的点点滴滴......</p>
+                    </div>
+                </div>
+                {% for i in happytime %}
+                <div class="item">
+                    <img src="/media/{{i.himage}}" alt="...">
+                    <div class="carousel-caption">
+                        <h3>{{i.title}}</h3>
+                        <p>{{i.text}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+        <!--****************************bootstrap轮播图插件结束********************************-->
+
+
+    </div>
+    <!-- happytime结束 -->
+
+
+
+
+
+
+</div>
+
+{% endblock body %}

@@ -7,13 +7,14 @@ from markdown import markdown  # 导入 markdown 插件,将markdown格式转化�
 class qingganwen(models.Model):
     date=models.DateTimeField(auto_now =True,verbose_name="最近更新日期")
     topic=models.CharField(max_length=30,verbose_name="主题")
-    content=models.FileField(upload_to='qingganwen/',verbose_name="文章上传")
+    content=models.TextField(max_length=3000,verbose_name="文章内容（建议使用MarkDown语法书写）")
     
     def __str__(self):
         return self.topic
     class Meta:
      verbose_name_plural = '情感频文章'
      verbose_name = "情感频文章"
+     ordering = ['date']
 
 class lisening(models.Model):
     date=models.DateField(auto_now=False,verbose_name="发布日期")
@@ -25,5 +26,6 @@ class lisening(models.Model):
     class Meta:
      verbose_name_plural = '每日一听歌曲录'
      verbose_name = "每日一听歌曲录"
+     ordering = ['date','topic']
 
 # Create your models here.

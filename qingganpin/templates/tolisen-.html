@@ -1,16 +1,84 @@
-﻿<!DOCTYPE html>
+﻿{% extends "base.html" %} {% load static %} {% block head_ex %}
+<title>细细品味</title>
+<!-- 引入音乐播放插件 参考自：http://www.htmleaf.com/jQuery/jquery-tools/201801044913.html -->
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title>细细品味</title>
-</head>
+<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'musicplayer/css/htmleaf-demo.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'musicplayer/css/vpplayer.css' %}"> {% endblock head_ex %} {% block body %}
+<style>
+    #player {
+        width: 800px;
+        margin: 50px auto;
+    }
+</style>
+<div class="container">
+
+    <div class="musicplayer">
+        <div class="htmleaf-container">
+            <!--vpplayer音乐播放器-->
+            <div id="player"></div>
+            <div id="player2"></div>
+        </div>
+    </div>
+    <script src="http://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type="text/javascript"></script>
+    <script>
+        window.jQuery || document.write('<script src="../../static/musicplayer/js/jquery-1.11.0.min.js"><\/script>')
+    </script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../static/musicplayer/js/vpplayer.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#player").vpplayer({
+                src: "/media/{{music}}",
+                trackName: "{{song_name}}",
+                preloadMessage: "音乐正在赶来的路上......",
+                playerColor: "black white",
+                displayColor: "blue pink"
+            });
+
+        });
+    </script>
+    <!--vpplayer音乐播放器-->
+    <style>
+        .music_txt {
+            color: black;
+        }
+        
+        .music_topic {
+            font-size: 30px;
+        }
+        
+        .music_story {
+            border: 2px #a83a3a solid;
+            width: 500px;
+        }
+    </style>
+    <div class="music_txt">
+        <div class="music_topic">
+            主题：{{song.topic}}
+        </div>
+        <div class="music_story">
+            故事：{{song.story}}
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+{% endblock body %}
+
 <body>
-    <p>更新日期{{song.date}}<p>
-    <p>主题：{{song.topic}}</p>
-    <p>故事：{{song.story}}</p>
-    <audio src="/media/{{music}}" controls="controls">
+    <p>更新日期{{song.date}}
+        <p>
+            <p>主题：{{song.topic}}</p>
+            <p>故事：{{song.story}}</p>
+            <audio src="/media/{{music}}" controls="controls">
        
     </audio>
 </body>
+
 </html>

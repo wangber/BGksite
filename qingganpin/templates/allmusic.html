@@ -1,25 +1,101 @@
-﻿<!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
-    <meta charset="utf-8" />
-    <title>所有音乐</title>
-
-</head>
-
-<body>
-    <div>
-        {% for i in music %}
-
-        <div style="border:solid">
-            <p class="intro-text" style="color:chartreuse">{{i.date}}</p>
-            <p class="intro-text" style="color:chartreuse">{{i.topic}}</p>
-            <p class="intro-text" style="color:chartreuse">{{i.story|truncatechars:10}}</p>
-            <a href="../../tolisen-{{i.id}}.html">去欣赏</a>
-        </div>
-        {% endfor %}
+﻿{% extends "base.html" %} {% block head_ex %}
+<title>每月一听——所有音乐</title>
+{% endblock head_ex %} {% block body %}
+<div class="container">
+    <div class="back" style="margin-top: 30px;">
+        <a href="javascript:history.go(-1)" class="glyphicon glyphicon-share-alt">返回</a>
     </div>
-</body>
+    <div class="panel panel-success all_music">
+        <div class="panel-heading">
+            <h3 class="panel-title ting_title">每月一听歌曲列表</h3>
+        </div>
+        <div class="panel-body">
+            <!-- 定制内容 -->
+            <style>
+                .one_song {
+                    margin-top: 20px;
+                    font-size: 150%;
+                    line-height: 50px；
+                }
+                
+                .meiyueyiting {
+                    margin-top: 35px;
+                }
+                
+                .ting_title {
+                    font-size: 25px !important;
+                }
+                
+                .all_music {
+                    margin-top: 15px;
+                }
+            </style>
+            <script>
+                $(function() {
+                    $('.one_song').mouseenter(function() {
+                        $(this).addClass('active');
+                        $(this).siblings().removeClass('active');
+                    })
+                    $('.one_song').mouseleave(function() {
+                        $(this).removeClass('active');
 
-</html>
+                    })
+                })
+            </script>
+            <div class="list-group">
+                {% for i in music %}
+                <span class="list-group-item  one_song">
+                            <h4 class="list-group-item-heading">主题：{{i.topic}}</h4>
+                            <p class="list-group-item-text">{{i.story|truncatechars:10}}</p>
+                            <a href="/tolisen-{{i.id}}.html"><i class="glyphicon glyphicon-headphones"></i> 去欣赏</a>
+                        </span> {% endfor %}
+            </div>
+
+        </div>
+        <div class="panel-footer">每月一听栏目由BGk.Failo维护</div>
+    </div>
+    <!-- 翻页按钮 -->
+    <div class="pagenum">
+
+        <span><a href=></a></span>
+
+        <!--******************-->
+
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li>
+                    {% if need_page.has_previous %}
+                    <a href="" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                    {% else %}
+                    <span aria-hidden="true">&laquo;</span> {% endif %}
+
+                </li>
+                {% for i in page_range %}
+                <li><a href="?page={{i}}">{{i}}</a></li>
+                {% endfor %}
+                <li>
+                    {% if need_page.has_next %}
+
+                    <a href="" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+
+                    </a>
+
+                    {% else %}
+                    <span aria-hidden="true">&raquo;</span>{% endif %}
+                </li>
+
+            </ul>
+        </nav>
+        <!--******************-->
+
+    </div>
+
+
+</div>
+
+</div>
+
+{% endblock body %}
