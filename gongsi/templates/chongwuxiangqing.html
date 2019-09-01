@@ -1,17 +1,59 @@
-﻿<!DOCTYPE html>
-
+﻿{% load static %}
+<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="utf-8" />
-    <title>宠物详情</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>查看宠物——{{zhizhu.name}}</title>
+    <script src="{% static 'js/jQuery.js' %}"></script>
+    <script src="{% static 'bootlib/js/bootstrap.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'bootlib/css/bootstrap.css' %}">
 </head>
+
 <body>
- 
-       <div style="border:dashed">
-            <p>{{zhizhu.name}}</p>
-            <img src="/media/{{zhizhu.zhuimage}}" alt="{{zhizhu.name}}" width="200" height="200" />
-            <p>{{zhizhu.introduce}}</p>
-       </div>
-  
+    <style>
+        .name>p {
+            font-size: 40px;
+            font-family: 'KaiTi';
+            width: 300px;
+            border: 1px solid rgb(20, 180, 68);
+            border-radius: 20px;
+            box-shadow: 7px 7px 3px #b3e7ea;
+            margin-top: 20px;
+        }
+        
+        .jianjietxt {
+            font-family: 'KaiTi_GB2312';
+            font-size: 15px;
+            padding: 15px;
+            margin-top: 25px;
+            border: 1px solid rgb(20, 180, 68);
+            border-radius: 20px;
+            box-shadow: 7px 7px 3px #deebb1;
+        }
+        
+        .zhizhuimg {
+            margin-top: 20px;
+        }
+    </style>
+    <div class="container">
+        <div class="alltxt">
+            <div class="name text-center">
+                <p>{{zhizhu.name}}</p>
+            </div>
+            <div class="zhizhuimg">
+                <img src="/media/{{zhizhu.zhuimage}}" alt="{{zhizhu.name}}" width="200" height="200" />
+            </div>
+            <div class="jianjietxt">
+                {% load markdown_deux_tags %}
+                <p>{{zhizhu.introduce|markdown}}</p>
+            </div>
+
+        </div>
+    </div>
+
 </body>
+
 </html>

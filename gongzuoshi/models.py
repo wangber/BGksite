@@ -12,7 +12,8 @@ class video(models.Model):
     vname = models.CharField(max_length=30,verbose_name="视频名")
     vtype = models.ForeignKey(type,on_delete=models.DO_NOTHING,verbose_name="视频分类")
     vdis = models.TextField(max_length=2000,verbose_name="视频描述")
-    vblianjie = models.CharField(max_length=50,verbose_name="B站链接")
+    video_img = models.FileField(upload_to="gongzuoshi/imgs/",verbose_name="上传一张视频的封面图片吧！",default='gongzuoshi/imgs/default.png')
+    vblianjie = models.CharField(max_length=50,verbose_name="B站链接，如果没有，那就填写'暂无'吧")
     videocontent=models.FileField(upload_to="gongzuoshi/",verbose_name="上传视频")
     def __str__(self):
         return self.vname

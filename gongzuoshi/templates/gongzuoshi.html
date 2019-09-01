@@ -1,53 +1,159 @@
-﻿<!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title>视频颂-杲师自媒体工作室</title>
-</head>
-{% extends "base.html"  %}
-{% block body  %}
-
-<body>
-    <div>
+﻿{% extends "base.html" %} {% load static %} {% block head_ex %}
+<title>视频颂</title>
+{% endblock head_ex %} {% block body %}
+<style>
+    body {
+        background: url("{% static 'someimgs/Star-Emission0.png' %}") no-repeat fixed;
+        /* background: black; */
+        background-size: cover;
+    }
+    
+    .welcome>p {
+        /* color: rgb(228, 231, 22); */
+        color: aliceblue;
+        font-size: 50px !important;
+    }
+    
+    .jianjie {
+        color: white;
+        font-size: 20px;
+    }
+    
+    .jianjie_txt {
+        border: 2px solid rgb(23, 170, 170);
+        border-radius: 20px;
+        box-shadow: 7px 7px 3px #b3e7ea;
+        display: none;
+        margin-top: 20px;
+        padding: 10px;
+    }
+</style>
+<div class="container">
+    <div class="welcome text-center">
         <p style="font-family:STXingkai;font-size:30px">欢迎光临杲师自媒体工作室</p>
     </div>
-    <div>
-        <p style="border:solid">工作室简介</p>
-        <p>**简介正文**</p>
-    </div>
-    <div>
-        <p style="border:solid">成员风采</p>
-        {% for i in member %}
-        <div style="border:dashed">
-            <p>成员：{{i.mname}}</p>
-            <p>承担工作：{{i.job}}</p>
-            <p>成员简介：{{i.jianjie}}</p>
-        </div>
-        {% endfor %}
-    </div>
+    <div class="jianjie">
+        <p>工作室简介</p>
+        <script>
+            $(function() {
+                $('.jianjie_contral').click(function() {
+                    $('.jianjie_txt').slideToggle(1000);
+                    if ($(this).text() === '查看简介') {
+                        $(this).text('收起简介');
+                    } else {
+                        $(this).text('查看简介');
+                    }
 
-    <div>
-        <p style="border:solid">视频区</p>
-        <table border="5">
-            <tr>
-
-                {% for i in type %}
-                <td>
-                    <span style="color:aquamarine">视频类别：{{i.tname}}<span><a href="videotype-{{i.id}}">进入该类</a></span></span><br>
-                    {% for j in video %}
-                    {% if j.vtype == i %}
-                    <div style="border:inherit">
-                        视频：{{j.vname}}<br>
-                        视频简介：{{j.vdis|truncatechars:5}}<span><a href="seevideo-{{j.id}}.html">去欣赏该视频</a></span><br>
+                })
+            })
+        </script>
+        <button class="jianjie_contral btn btn-primary btn-lg">查看简介</button>
+        <p class="jianjie_txt">杲丝自媒体工作室，现有动漫部，文案部，后期部，宣传部，四个部门，目前主要经营帐号有B站(一只很饿的梦琪)，商业合作请联系88888888，周更是不可能的，1w粉之前是不可能周更的,自由工作者
+        </p>
+    </div>
+    <!-- 简介 -->
+    <!-- 成员 -->
+    <style>
+        /* .allmember {
+            color: aliceblue;
+            font: 25px;
+            border: 10px solid #ffffff;
+            padding: 15px;
+        } */
+        
+        .onemember {
+            border: 2px solid #ffffff;
+            height: 200px;
+            overflow: hidden;
+            float: left;
+        }
+        
+        .member {
+            margin-top: 20px;
+        }
+        
+        .member>p {
+            font-size: 20px;
+            color: white
+        }
+    </style>
+    <div class="member">
+        <p>成员风采</p>
+        <div class="allmember">
+            <div class="row">
+                {% for i in member %}
+                <div class="col-xs-6 col-md-4 ">
+                    <div class="onemember thumbnail">
+                        <p>成员ID：<span class="lead">{{i.mname}}</span></p>
+                        <p>承担工作：{{i.job}}</p>
+                        <p>成员简介：{{i.jianjie}}</p>
                     </div>
-                    {% endif %}
-                    {% endfor %}
-                    {% endfor %}
-                </td>
-            </tr>
-        </table>
+                </div>
+                {% empty %}
+                <p class="empty">抱歉，成员信息还没有上传哦</p>
+                {% endfor %}
+
+            </div>
+        </div>
     </div>
-</body>
-{% endblock %}
-</html>
+    <!-- 成员结束 -->
+    <!-- 视频区 -->
+    <style>
+        .video>p {
+            color: aliceblue;
+            font-size: 20px;
+        }
+        
+        #video_img {
+            width: 64px;
+            height: 64px;
+        }
+        
+        .onetype {
+            border: 2px solid #ffffff;
+            height: 374px;
+            margin: 30px;
+            overflow: auto;
+            border-radius: 20px;
+            box-shadow: 7px 7px 3px #234f91;
+        }
+        
+        #typename {
+            border: 2px solid #ffffff;
+            border-radius: 20px;
+            box-shadow: 7px 7px 3px #234f91;
+        }
+    </style>
+    <div class="video">
+        <p>视频区</p>
+        <div class="allvideo">
+            {% for i in type %}
+            <div class="onetype panel panel-warning col-xs-6 col-md-5">
+                <div id="typename" class="panel-heading">
+                    <h1 class="panel-title lead">{{i.tname}}<span style="float:right"><a href="videotype-{{i.id}}" target="_blank ">进入该类</a></span></h1>
+                </div>
+                <ul class="media-list panel-body">
+                    {% for j in video %} {% if j.vtype == i %}
+                    <li class="media ">
+                        <div class="media-left ">
+                            <a href="seevideo-{{j.id}}.html " target="_blank">
+                                <img class="media-object " src="../../media/{{j.video_img}}" alt="视频封面未加载" id="video_img">
+                            </a>
+                        </div>
+                        <div class="media-body ">
+                            <h4 class="media-heading ">{{j.vname}}</h4>
+                            视频简介：{{j.vdis|truncatechars:20}}
+                        </div>
+                    </li>
+                    {% endif %} {% empty %}
+                    <p class="empty">抱歉，还没来得及更新视频哦，敬请期待吧</p>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+</div>
+{% endblock body %}

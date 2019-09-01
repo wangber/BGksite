@@ -1,19 +1,49 @@
-﻿{% extends "base.html"  %}
-{% block body  %}
-<body>
+﻿{% extends "base.html" %} {% block body %}
+
+<style>
+    .title {
+        font-size: 50px;
+        margin-top: 100px;
+    }
     
-    <!-- Header -->
-    <header class="intro">
-        <div class="intro-body">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <p class="intro-text"><a href="xingfukuaile">幸福快乐有限公司</a></p>
-                        <p class="intro-text"><a href="/gongzuoshi">杲师自媒体工作室</a></p>
-                    </div>
+    .onecompany {
+        font-size: 20px;
+        border: 1px solid rgb(20, 180, 68);
+        border-radius: 20px;
+        box-shadow: 3px 3px 6px #b3e7ea;
+        width: 600px;
+        margin: 20px auto auto auto;
+    }
+</style>
+<div class="container">
+    <div class="title text-center">
+        <p>目前，BGk旗下主要有3大组织<span class="glyphicon glyphicon-hand-down"></span></p>
+    </div>
+    <div class="company text-center">
+        <div class="onecompany">
+            <p class="intro-text"><a href="xingfukuaile">幸福快乐有限公司</a></p>
+        </div>
+        <div class="onecompany">
+            <p class="intro-text"><a href="/gongzuoshi">杲师自媒体工作室</a></p>
+        </div>
+        <div class="onecompany">
+            <p class="intro-text"><a href="#">俊鹏麦片工作室（建设中，敬请期待(*￣︶￣)）</a></p>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+<header class="intro">
+    <div class="intro-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <p class="intro-text"><a href="xingfukuaile">幸福快乐有限公司</a></p>
+                    <p class="intro-text"><a href="/gongzuoshi">杲师自媒体工作室</a></p>
                 </div>
             </div>
         </div>
-    </header>
-</body>
-{% endblock %}
+    </div>
+</header>

@@ -12,6 +12,9 @@
     }
 </style>
 <div class="container">
+    <div class="back" style="margin-top: 30px;">
+        <a href="javascript:history.go(-1)" class="glyphicon glyphicon-share-alt">返回</a>
+    </div>
 
     <div class="musicplayer">
         <div class="htmleaf-container">
@@ -49,16 +52,26 @@
         }
         
         .music_story {
-            border: 2px #a83a3a solid;
-            width: 500px;
+            border: 2px #ece284 solid;
+            background: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567102709157&di=be9958edb27f51853603be79d8ecb753&imgtype=0&src=http%3A%2F%2Fwww.sj520.cn%2Fsc%2Fima%2F20160911204740_91887.jpg") no-repeat;
+            background-size: cover;
+            border-radius: 20px;
+            box-shadow: 10px 10px 5px #866d6d;
+            margin: 50px auto;
+        }
+        
+        .music_story>p {
+            margin: 15px;
         }
     </style>
     <div class="music_txt">
         <div class="music_topic">
-            主题：{{song.topic}}
+            <p>主题：{{song.topic}}</p>
+            <p style="font-size:20px"><span class="glyphicon glyphicon-music"></span>歌曲：{{song_name}} </p>
         </div>
         <div class="music_story">
-            故事：{{song.story}}
+            {% load markdown_deux_tags %}
+            <p>{{song.story|markdown}}</p>
         </div>
     </div>
 
@@ -71,14 +84,5 @@
 
 {% endblock body %}
 
-<body>
-    <p>更新日期{{song.date}}
-        <p>
-            <p>主题：{{song.topic}}</p>
-            <p>故事：{{song.story}}</p>
-            <audio src="/media/{{music}}" controls="controls">
-       
-    </audio>
-</body>
 
 </html>

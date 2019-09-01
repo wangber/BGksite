@@ -24,8 +24,8 @@ class lisening(models.Model):
     def __str__(self):
         return self.topic
     class Meta:
-     verbose_name_plural = '每日一听歌曲录'
-     verbose_name = "每日一听歌曲录"
+     verbose_name_plural = '每月一听歌曲录'
+     verbose_name = "每月一听歌曲录"
      ordering = ['date','topic']
 
 # Create your models here.

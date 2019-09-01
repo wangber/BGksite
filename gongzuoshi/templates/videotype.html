@@ -1,19 +1,83 @@
-﻿<!DOCTYPE html>
-
+﻿ {% load static %}
+<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="utf-8" />
     <title>{{type.tname}}类视频区</title>
+    <script src="{% static 'js/jQuery.js' %}"></script>
+    <script src="{% static 'bootlib/js/bootstrap.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'bootlib/css/bootstrap.css' %}">
 </head>
+
 <body>
-    <div>
-        <p style="color:blue">{{type.tname}}类视频区</p>
-    </div>
-    <div style="border:inherit">
-        {% for i in video %}
-        视频：{{i.vname}}<br>
-        视频简介：{{i.vdis|truncatechars:5}}<span><a href="seevideo-{{i.id}}.html">去欣赏该视频</a></span><br>
-        {% endfor %}
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        body {
+            background: url("{% static 'someimgs/Star-Emission0.png' %}") no-repeat fixed;
+            /* background: black; */
+            background-size: cover;
+        }
+        
+        .typetitle {
+            border: 2px solid rgb(23, 170, 170);
+            border-radius: 20px;
+            box-shadow: 7px 7px 3px #b3e7ea;
+            margin-top: 50px;
+        }
+        
+        #video_img {
+            width: 128px;
+            height: 128px;
+        }
+        
+        .onevideo {
+            background: #e4e4e4;
+            margin: 10px 25px 10px 0 !important;
+            border: 2px solid seashell;
+            border-radius: 20px;
+            box-shadow: 7px 7px 3px #b3e7ea;
+        }
+        
+        .action {
+            font-size: 20px;
+            color: blanchedalmond;
+        }
+    </style>
+    <div class="container">
+
+        <div class="jumbotron typetitle text-center">
+            <h1>{{type.tname}}类视频区</h1>
+        </div>
+        <div class="action glyphicon glyphicon-share-alt">
+            <a href="/gongzuoshi">返回工作室首页</a>
+        </div>
+        <div class="allvideo">
+            <ul class="media-list">
+                {% for j in video %}
+                <li class="media col-xs-6 col-md-5 onevideo">
+                    <div class="media-left ">
+                        <a href="seevideo-{{j.id}}.html " target="_blank">
+                            <img class="media-object " src="../../media/{{j.video_img}}" alt="视频封面未加载" id="video_img">
+                        </a>
+                    </div>
+                    <div class="media-body ">
+                        <h4 class="media-heading ">{{j.vname}}</h4>
+                        视频简介：{{j.vdis|truncatechars:20}}
+                    </div>
+                </li>
+                {% empty %}
+                <p class="empty">抱歉，还没来得及更新视频哦，敬请期待吧</p>
+                {% endfor %}
+            </ul>
+        </div>
+
+
     </div>
 </body>
+
 </html>
