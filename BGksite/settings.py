@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
+##该文件不纳入管理
+
 import os
 import markdown
 
@@ -25,6 +27,7 @@ SECRET_KEY = 'e(jj3pyaglro0p_8^*6c(2--ld#f4#0-#c&@aqkc+9$s4+ffbo'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
 
 ALLOWED_HOSTS = ["*"]
 
